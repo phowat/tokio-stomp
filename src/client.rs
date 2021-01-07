@@ -32,14 +32,15 @@ pub async fn connect(
 
 async fn client_handshake(
     transport: &mut ClientTransport,
-    host: String,
+    _host: String,
     login: Option<String>,
     passcode: Option<String>,
 ) -> Result<()> {
+
     let connect = Message {
         content: ToServer::Connect {
             accept_version: "1.2".into(),
-            host: host,
+            host: "/".to_string() , //host,
             login: login,
             passcode: passcode,
             heartbeat: None,
